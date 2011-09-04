@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+	<TableLayout android:layout_height="wrap_content"
+		android:layout_width="match_parent" android:id="@+id/tableLayout1">
+		<TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<Button android:text="RenderScript" android:id="@+id/buttonRS"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_margin="5dip"></Button>
+			<TextView android:layout_width="wrap_content" android:id="@+id/tv_rs"
+				android:layout_height="wrap_content" android:text="..."
+				android:textSize="30dip" android:layout_margin="5dip" />
+		</TableRow>
+		<TableRow android:id="@+id/tableRow2" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<Button android:text="Java" android:id="@+id/buttonJava"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_margin="5dip"></Button>
+			<TextView android:layout_width="wrap_content" android:id="@+id/tv_java"
+				android:layout_height="wrap_content" android:text="..."
+				android:textSize="30dip" android:layout_margin="5dip" />
+		</TableRow>
+		<TableRow android:id="@+id/tableRow3" android:layout_width="wrap_content"
+			android:layout_height="wrap_content">
+			<Button android:text="Java 2 Threads" android:id="@+id/buttonJavaThreads"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_margin="5dip"></Button>
+			<TextView android:layout_width="wrap_content" android:id="@+id/tv_javathreads"
+				android:layout_height="wrap_content" android:text="..."
+				android:textSize="30dip" android:layout_margin="5dip" />
+		</TableRow>
+	</TableLayout>
+	<ImageView android:layout_height="wrap_content" android:id="@+id/imageView1"
+		android:src="@drawable/icon" android:layout_width="wrap_content"></ImageView>
+</LinearLayout>
