@@ -8,5 +8,8 @@
 	<Button android:layout_height="wrap_content" android:text="Mandelbrot"
 		android:id="@+id/chooser_button1" android:layout_width="wrap_content"
 		android:layout_gravity="center"></Button>
+	<Button android:text="Simple Graphics" android:id="@+id/chooser_button_simple_graphics"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center"></Button>
 
 </LinearLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-      package="org.cirrus.mobi"
+      package="de.inovex.mobi.rsdemos"
       android:versionCode="1"
       android:versionName="1.0">
     <uses-sdk android:minSdkVersion="13" />
@@ -10,7 +10,10 @@
         </activity>
         <activity android:name="SepiaActivity">
         </activity>
-		<activity android:name="ChooserActivity">
+        <activity android:name="RSGraphicsDemoActivity">
+        </activity>
+	 
+		<activity android:name="de.inovex.mobi.rsdemos.ChooserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
