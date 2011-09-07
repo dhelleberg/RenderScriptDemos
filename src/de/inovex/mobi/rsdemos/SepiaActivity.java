@@ -1,13 +1,11 @@
 package de.inovex.mobi.rsdemos;
 
-
 import java.util.concurrent.CountDownLatch;
 
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.renderscript.Allocation;
@@ -85,8 +83,9 @@ public class SepiaActivity extends Activity {
 					mBitmapIn.getConfig());
 
 			Allocation mInAllocation = Allocation.createFromBitmap(mRS, mBitmapIn,
-					Allocation.MipmapControl.MIPMAP_NONE,
-					Allocation.USAGE_SCRIPT);
+													Allocation.MipmapControl.MIPMAP_NONE,
+													Allocation.USAGE_SCRIPT);
+			
 			Allocation mOutAllocation = Allocation.createTyped(mRS, mInAllocation.getType());
 
 			ScriptC_sepia mScript = new ScriptC_sepia(mRS, getResources(), R.raw.sepia);
