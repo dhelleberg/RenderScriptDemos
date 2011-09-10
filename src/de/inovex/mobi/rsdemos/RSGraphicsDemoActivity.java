@@ -4,10 +4,10 @@ import android.app.Activity;
 import android.os.Bundle;
 
 public class RSGraphicsDemoActivity extends Activity {
-    private RSGraphicsDemoView mView;
+   
+	private RSGraphicsDemoView mView;
 
-	/** Called when the activity is first created. */
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
@@ -15,6 +15,8 @@ public class RSGraphicsDemoActivity extends Activity {
         setContentView(mView);
     }
     
-    
+    /**
+     * Missing onDestroy, cleanups, etc. Don't use this in production!
+     */
     
 }

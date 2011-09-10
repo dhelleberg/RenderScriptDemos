@@ -6,7 +6,6 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.renderscript.Allocation;
 import android.renderscript.Mesh;
-import android.renderscript.ProgramFragment;
 import android.renderscript.ProgramFragmentFixedFunction;
 import android.renderscript.ProgramStore;
 import android.renderscript.RenderScriptGL;
@@ -14,7 +13,7 @@ import android.renderscript.RenderScriptGL;
 public class RSGraphicsDemoScript {
 
 	private Resources mRes;
-	private RenderScriptGL mRS;
+	private RenderScriptGL mRSGL;
 	private ScriptC_rsgraphicsdemo mScript;
 	private ProgramFragmentFixedFunction mProgramFragment;
 
@@ -22,19 +21,23 @@ public class RSGraphicsDemoScript {
 
 	// This provides us with the renderscript context and resources that
 	// allow us to create the script that does rendering
-	public void init(RenderScriptGL rs, Resources res) {
-		mRS = rs;
+	public void init(RenderScriptGL rsGL, Resources res) {
+		mRSGL = rsGL;
 		mRes = res;
 
-		mScript = new ScriptC_rsgraphicsdemo(mRS, mRes, R.raw.rsgraphicsdemo);
+		//get instance of the script wrapper class
+		mScript = new ScriptC_rsgraphicsdemo(mRSGL, mRes, R.raw.rsgraphicsdemo);
 
-		Bitmap logo = BitmapFactory.decodeResource(	res, R.drawable.inovex_logo);
+		//load bitmap for texturing
+		Bitmap logo = BitmapFactory.decodeResource(	res, R.drawable.inovex_free);
 		float logo_with = logo.getWidth();
 		float logo_height = logo.getHeight();
 		
-		Allocation mLogoAlloc = Allocation.createFromBitmap(rs, logo);
+		//create allocation
+		Allocation mLogoAlloc = Allocation.createFromBitmap(mRSGL, logo);
 		
-		Mesh.TriangleMeshBuilder tmb = new Mesh.TriangleMeshBuilder(rs, 2, Mesh.TriangleMeshBuilder.TEXTURE_0);
+		//Build mesh and set texture coords
+		Mesh.TriangleMeshBuilder tmb = new Mesh.TriangleMeshBuilder(mRSGL, 2, Mesh.TriangleMeshBuilder.TEXTURE_0);
 		tmb.setTexture(0f, 0f);
 		tmb.addVertex(0f, 0f);
 		tmb.setTexture(1, 0);
@@ -43,21 +46,22 @@ public class RSGraphicsDemoScript {
 		tmb.addVertex(logo_with, logo_height);
 		tmb.setTexture(0, 1);
 		tmb.addVertex(0, logo_height);
+		//build triangles
 		tmb.addTriangle(0, 3, 1);
 		tmb.addTriangle(1, 3, 2);
 		Mesh logoMesh = tmb.create(true);
 		mScript.set_gLogoMesh(logoMesh);
 		
-		ProgramFragmentFixedFunction.Builder textureBuilder = new ProgramFragmentFixedFunction.Builder(rs);
+		ProgramFragmentFixedFunction.Builder textureBuilder = new ProgramFragmentFixedFunction.Builder(mRSGL);
 		textureBuilder.setTexture(ProgramFragmentFixedFunction.Builder.EnvMode.DECAL, 
 								  ProgramFragmentFixedFunction.Builder.Format.RGBA, 0);
 		mProgramFragment = textureBuilder.create();
 		mProgramFragment.bindTexture(mLogoAlloc, 0);
 		mScript.set_gProgFragmentTexture(mProgramFragment);
 		
-		//rs.bindProgramStore(ProgramStore.BLEND_ALPHA_DEPTH_NONE(rs));
+		mRSGL.bindProgramStore(ProgramStore.BLEND_ALPHA_DEPTH_NONE(mRSGL));
 		
-		mRS.bindRootScript(mScript);
+		mRSGL.bindRootScript(mScript);
 		
 		
 	}

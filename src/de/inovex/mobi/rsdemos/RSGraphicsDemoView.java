@@ -8,27 +8,13 @@ import android.view.MotionEvent;
 public class RSGraphicsDemoView extends RSSurfaceView{
 
     // Renderscipt context
-    private RenderScriptGL mRS;
-	private RSGraphicsDemoScript mRender;
+    private RenderScriptGL mRSGL;
+	private RSGraphicsDemoScript mRenderScript;
 	
 	public RSGraphicsDemoView(Context context) {
 		super(context);
 		initRenderScript();
-	}
-
-	private void initRenderScript() {
-	    if (mRS == null) {
-            // Initialize renderscript with desired surface characteristics.
-            // In this case, just use the defaults
-            RenderScriptGL.SurfaceConfig sc = new RenderScriptGL.SurfaceConfig();
-            mRS = createRenderScriptGL(sc);
-            // Create an instance of the script that does the rendering
-            mRender = new RSGraphicsDemoScript();
-            mRender.init(mRS, getResources());
-        }
-	}
-	
-	
+	}	
 	
     @Override
     protected void onAttachedToWindow() {
@@ -37,25 +23,35 @@ public class RSGraphicsDemoView extends RSSurfaceView{
     }
 
     @Override
-    protected void onDetachedFromWindow() {
-        // Handle the system event and clean up
-        //mRender = null;
-        if (mRS != null) {
-            mRS = null;
-            destroyRenderScriptGL();
-        }
-    }
-
-    @Override
     public boolean onTouchEvent(MotionEvent ev) {
         // Pass touch events from the system to the rendering script
         if (ev.getAction() == MotionEvent.ACTION_DOWN) {
-            mRender.onActionDown((int)ev.getX(), (int)ev.getY());
+            mRenderScript.onActionDown((int)ev.getX(), (int)ev.getY());
             return true;
         }
-
         return false;
     }
 
+	private void initRenderScript() {
+	    if (mRSGL == null) {
+            // Initialize renderscript with desired surface characteristics.
+            // In this case, just use the defaults
+            RenderScriptGL.SurfaceConfig sc = new RenderScriptGL.SurfaceConfig();
+            mRSGL = createRenderScriptGL(sc);
+            // Create an instance of the script that does the rendering
+            mRenderScript = new RSGraphicsDemoScript();
+            mRenderScript.init(mRSGL, getResources());
+        }
+	}
+
+    @Override
+    protected void onDetachedFromWindow() {
+        // Handle the system event and clean up
+        //mRender = null;
+        if (mRSGL != null) {
+            mRSGL = null;
+            destroyRenderScriptGL();
+        }
+    }
 
 }
