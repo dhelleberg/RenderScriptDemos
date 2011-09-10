@@ -8,9 +8,11 @@
     <application android:icon="@drawable/icon" android:label="@string/app_name">
         <activity android:name=".MandelbrotActivity">
         </activity>
-        <activity android:name="SepiaActivity">
+        <activity android:name=".SepiaActivity">
         </activity>
-        <activity android:name="RSGraphicsDemoActivity">
+        <activity android:name=".RSGraphicsDemoActivity">
+        </activity>
+        <activity android:name=".RSCarouselDemoActivity">
         </activity>
 	 
 		<activity android:name="de.inovex.mobi.rsdemos.ChooserActivity">

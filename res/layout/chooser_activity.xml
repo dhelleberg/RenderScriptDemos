@@ -11,5 +11,8 @@
 	<Button android:text="Simple Graphics" android:id="@+id/chooser_button_simple_graphics"
 		android:layout_width="wrap_content" android:layout_height="wrap_content"
 		android:layout_gravity="center"></Button>
+	<Button android:text="Carousel Demo" android:id="@+id/chooser_button_carousel_Demo"
+		android:layout_width="wrap_content" android:layout_height="wrap_content"
+		android:layout_gravity="center"></Button>
 
 </LinearLayout>

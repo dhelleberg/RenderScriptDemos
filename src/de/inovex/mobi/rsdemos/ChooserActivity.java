@@ -43,6 +43,14 @@ public class ChooserActivity extends Activity {
 				startActivity(new Intent(mContext, RSGraphicsDemoActivity.class));
 			}
 		});
+		Button bcd = (Button) findViewById(R.id.chooser_button_carousel_Demo);
+		bcd.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(mContext, RSCarouselDemoActivity.class));
+			}
+		});	
 
 	}
 
