@@ -26,7 +26,7 @@ int gTouchX;
 int gTouchY;
 
 
-// simple mesh to display the loge
+// simple mesh to display the logo
 rs_mesh gLogoMesh;
 
 // fragment shader for the texture
@@ -45,17 +45,13 @@ int root(int launchID) {
     // Clear the background color
     rsgClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
-    // Default vertex shader
-    //rsgBindProgramVertex(gProgVertex);
-
-	//texture shader
+  	//texture shader
     rsgBindProgramFragment(gProgFragmentTexture);
 
 	// Load vertex matrix as model matrix
     rs_matrix4x4 matrix;
     rsMatrixLoadIdentity(&matrix);
-    rsMatrixLoadTranslate(&matrix,gTouchX, gTouchY, 0.0f); // camera position
-    //rsMatrixRotate(&matrix, rot, 0.0f, 1.0f, 0.0f); // camera rotation
+    rsMatrixLoadTranslate(&matrix,gTouchX, gTouchY, 0.0f); // mesh position
     
     rsgProgramVertexLoadModelMatrix(&matrix);
 	
