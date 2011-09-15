@@ -1,0 +1,9 @@
+Source code of the Android RenderScript Demos which I showed and used for my presentation at the Mobile Tech Con 2011.
+
+Some samples are based on code from daoki2 http://code.google.com/p/renderscript-examples/ which is mentioned at the top of the source code files.
+
+Compile and run on an Android 3.x tablet. This will NOT work on the emulator as it doesn't support RenderScript at all.
+
+Check the slides of the presentation here:
+
+http://www.slideshare.net/dhelleberg/renderscript-in-android-3x
