@@ -131,7 +131,7 @@ static void initBitmaps() {
 	}
 }
 
-int root(int launchID) {
+int root() {
 	if (initialized == 0) {
 		initBitmaps();
 		initialized = 1;

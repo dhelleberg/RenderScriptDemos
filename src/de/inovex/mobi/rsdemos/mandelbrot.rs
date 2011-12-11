@@ -30,7 +30,7 @@ rs_script gScript;
 uint32_t counter = 0;
  
  
-int calculateDistance(double x, double y)
+static int calculateDistance(double x, double y)
 {
 	int c = 0;
 	
